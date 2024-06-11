@@ -23,6 +23,17 @@ st.markdown(
             align-items: center;
             justify-content: center;
         }
+        .fracture-description-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            text-align: center;  /* Center text horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
         .stApp {
             background-image: url("https://static.vecteezy.com/system/resources/previews/021/430/771/non_2x/clean-sky-blue-gradient-background-with-text-space-editable-blurred-white-blue-illustration-for-the-backdrop-of-the-banner-poster-business-presentation-book-cover-advertisement-or-website-vector.jpg");
             background-size: cover;
@@ -70,6 +81,6 @@ if st.sidebar.button("Analyze Fracture") and uploaded_file is not None:
         # Display fracture with description
         fracture_description = fracture_dict[predicted_fracture]  # Get description from fracture_descriptions.py file
         col2.markdown(f'<div class="text-box"><h2>{predicted_fracture}</h2></div>', unsafe_allow_html=True)
-        col2.markdown(f'<div class="text-box"><h4>Fracture Description: </h4>{fracture_description}</div>', unsafe_allow_html=True)
+        col2.markdown(f'<div class="fracture-description-box"><h4>Fracture Description: </h4>{fracture_description}</div>', unsafe_allow_html=True)
 
         shapley(img_array, col2) # display shapley
