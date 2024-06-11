@@ -6,7 +6,6 @@ import numpy as np
 import io
 import os
 
-from PIL import Image
 from fracture_descriptions import fracture_dict
 from tensorflow import keras
 
@@ -56,10 +55,11 @@ def predict_single_image(model, img_array, class_names_dict):
 
 def shapley(img_array, col2):
     """Function to display Shapley values."""
-    st.write('Loading Shapley... ')
+    placeholder = st.empty()
+    placeholder.markdown('Loading Shapley... ')
     masker = shap.maskers.Image("blur(16, 16)", img_array[0].shape)
     explainer = shap.Explainer(model, masker, output_names=list(class_names_dict.values()))
-    shap_values = explainer(img_array, max_evals=8000, batch_size=50, outputs=shap.Explanation.argsort.flip[:4])
+    shap_values = explainer(img_array, max_evals=500, batch_size=50, outputs=shap.Explanation.argsort.flip[:4])
 
     # Plot SHAP values
     plt.figure()
@@ -69,29 +69,6 @@ def shapley(img_array, col2):
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
     buf.seek(0)
-    col2.image(buf, caption='Shapley Values', use_column_width=True, clamp=True)
+    st.image(buf, caption='Shapley Values', use_column_width=True, clamp=True)
     buf.close()
-
-def analyze_fracture(uploaded_file):
-    """Analyze the uploaded X-ray image for fractures."""
-    col1, col2 = st.columns(2)
-
-    # Turn file into image and display it
-    img = Image.open(uploaded_file)
-    col1.image(img, caption='Uploaded X-Ray', use_column_width=True, output_format='JPEG', clamp=True)
-
-    img_array = preprocess_single_image(img)
-    print("Image preprocessed successfully.")
-
-    predicted_fracture = predict_single_image(model, img_array, class_names_dict)
-    print(f"Predicted class: {predicted_fracture}")
-
-    if predicted_fracture == 'non_fractured':
-        col2.markdown(f'<div class="text-box">#### No Fracture Detected \n</div>', unsafe_allow_html=True)
-    else:
-        # Display fracture with description
-        fracture_description = fracture_dict[predicted_fracture]  # Get description from fracture_descriptions.py file
-        col2.markdown(f'<div class="text-box">#### {predicted_fracture} \n</div>', unsafe_allow_html=True)
-        col2.markdown(f'<div class="text-box">\n Fracture Description: \n {fracture_description}</div>', unsafe_allow_html=True)
-
-        shapley(img_array, col2)  # Pass col2 to shapley function to display the plot
+    placeholder.empty()
