@@ -18,7 +18,7 @@ st.markdown(
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            text-align: center;  
+            text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -29,9 +29,6 @@ st.markdown(
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         .stApp {
             background-image: url("https://static.vecteezy.com/system/resources/previews/021/430/771/non_2x/clean-sky-blue-gradient-background-with-text-space-editable-blurred-white-blue-illustration-for-the-backdrop-of-the-banner-poster-business-presentation-book-cover-advertisement-or-website-vector.jpg");
