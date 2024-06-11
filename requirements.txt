@@ -1,0 +1,6 @@
+shap==0.41.0
+matplotlib==3.5.3
+tensorflow==2.16.1
+numpy==1.26.4
+Pillow==10.3.0
+opencv-python-headless
