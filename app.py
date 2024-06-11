@@ -45,7 +45,10 @@ st.sidebar.markdown('<div class="title">X-Ray Fracture Identifier</div>', unsafe
 st.sidebar.write('') # Spacing
 
 # Display file uploader and save uploaded file to variable
-uploaded_file = st.sidebar.file_uploader("Input X-Ray Image for Processing: ", type=["jpg", "jpeg", "png"])
+st.sidebar.write('Step 1: Upload X-ray for analysis')
+uploaded_file = st.sidebar.file_uploader("", type=["jpg", "jpeg", "png"])
+st.sidebar.write('') # Spacing
+
 
 # Create columns
 col1, col2 = st.columns(2)
@@ -54,6 +57,9 @@ col1, col2 = st.columns(2)
 col1.markdown('<div class="text-box"><h2>X-Ray</h2></div>', unsafe_allow_html=True)
 col2.markdown('<div class="text-box"><h2>Diagnosis</h2></div>', unsafe_allow_html=True)
 
+# Text to guide user
+st.sidebar.write('Step 2: Click here to run analysis')
+st.sidebar.write('') # Spacing
 
 # Button to analyze fracture
 if st.sidebar.button("Analyze Fracture") and uploaded_file is not None:
