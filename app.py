@@ -18,7 +18,7 @@ st.markdown(
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            text-align: center;  /* Center text horizontally */
+            text-align: center;  
             display: flex;
             align-items: center;
             justify-content: center;
@@ -29,7 +29,6 @@ st.markdown(
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin: 20px;
-            text-align: center;  /* Center text horizontally */
             display: flex;
             align-items: center;
             justify-content: center;
