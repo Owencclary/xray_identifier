@@ -43,10 +43,12 @@ st.markdown(
 # Title and file input
 st.sidebar.markdown('<div class="title">X-Ray Fracture Identifier</div>', unsafe_allow_html=True)
 st.sidebar.write('') # Spacing
+st.sidebar.write('') # Spacing
 
 # Display file uploader and save uploaded file to variable
 st.sidebar.write('Step 1: Upload X-ray for analysis')
 uploaded_file = st.sidebar.file_uploader("", type=["jpg", "jpeg", "png"])
+st.sidebar.write('') # Spacing
 st.sidebar.write('') # Spacing
 
 
